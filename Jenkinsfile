@@ -31,11 +31,10 @@ pipeline{
             }
         }                   
         stage('notification'){           
-            steps ('success') {
+            steps {
                 mail to:"vc@gmail.com", subject:"SUCCESS: ${currentBuild.fullDisplayName}", body: "Yay, we passed."
                         }
-                   
-            steps ('failure') {
+            steps {
                 mail to:"vc@gmail.co", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Boo, we failed."
                     }
             
