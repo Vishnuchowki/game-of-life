@@ -4,8 +4,8 @@ pipeline{
         stage('VCS'){
             //agent { label 'git'}
             steps {
-               git url: 'https://github.com/Vishnuchowki/game-of-life.git'
-                    branch: 'declarative' 
+               git url: 'https://github.com/Vishnuchowki/game-of-life.git',
+                    branch:'declarative' 
             }
         }
         stage('package'){
