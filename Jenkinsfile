@@ -10,8 +10,11 @@ pipeline{
         }
         stage(package){
             //agent { label 'maven' || 'maven-jdk'}
+                tolls{
+                jdk 'JDK_8_UBUNTU'
+            }
             steps {
-                sh 'export PATH="/usr/lib/jvm/java-1.8.0-openjdk-amd64/bin:$PATH" && mvn package'
+                sh 'mvn package'
             }
         }
         stage(postbuild){
