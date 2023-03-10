@@ -29,13 +29,15 @@ pipeline{
                     onlyIfSuccessful: true
                 junit testResults: '**/surefire-reports/TEST-*.xml'
             }
+                success {
+            mail to:"vc@gmail.com", subject:"SUCCESS: ${currentBuild.fullDisplayName}", body: "Yay, we passed."
         }
-        //('post build') {
-            //steps {
-              //  archiveArtifacts artifacts: '**/target/gameoflife.war',
-                //                 onlyIfSuccessful: true
-               // junit testResults: '**/surefire-reports/TEST-*.xml'
-          //  }
-        //}
+        failure {
+            mail to:"vc@gmail.co", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Boo, we failed."
+        }
+    }   
+
+        }
+        
     }
 }
