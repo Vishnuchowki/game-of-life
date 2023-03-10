@@ -1,6 +1,6 @@
 pipeline{
     agent { label 'JDK_17'}
-    triggers { cron ('H/15 * * * *') }
+    triggers { pollSCM ('H/30 * * * *') }
     stages{
         stage('VCS'){
             //agent { label 'git'}
