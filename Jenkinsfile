@@ -5,7 +5,6 @@ pipeline{
         string(name: 'MAVEN_GOAL', defaultValue: 'package', description: 'maven goal') 
         }
 
-    }
     stages{
         stage('VCS'){
             //agent { label 'git'}
@@ -39,5 +38,4 @@ pipeline{
           //  }
         //}
     }
-
-
+}
