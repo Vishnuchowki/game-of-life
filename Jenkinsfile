@@ -22,10 +22,16 @@ pipeline{
             steps { 
                 archiveArtifacts artifacts: '**/target/gameoflife.war',
                     onlyIfSuccessful: true
-                junit testResults: '**/surefire-report/TEST-*.xml'
+                junit testResults: '**/surefire-reports/TEST-*.xml'
             }
         }
-    }
+        //('post build') {
+            steps {
+                archiveArtifacts artifacts: '**/target/gameoflife.war',
+                                 onlyIfSuccessful: true
+                junit testResults: '**/surefire-reports/TEST-*.xml'
+            }
+        //}
 
 
 }
