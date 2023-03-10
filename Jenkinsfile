@@ -1,14 +1,14 @@
 pipeline{
     agent { label 'JDK_17'}
     stages{
-        stage(VCS){
+        stage('VCS'){
             //agent { label 'git'}
             steps {
                git url: 'https://github.com/Vishnuchowki/game-of-life.git'
-                branch: 'declarative' 
+                    branch: 'declarative' 
             }
         }
-        stage(package){
+        stage('package'){
             //agent { label 'maven' || 'maven-jdk'}
                 tolls{
                 jdk 'JDK_8_UBUNTU'
@@ -17,7 +17,7 @@ pipeline{
                 sh 'mvn package'
             }
         }
-        stage(postbuild){
+        stage('postbuild'){
             //agent { label 'k8s' && 'developer'}
             steps { 
                 archiveArtifacts artifacts: '**/target/gameoflife.war',
