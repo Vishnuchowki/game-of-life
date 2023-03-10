@@ -1,6 +1,11 @@
 pipeline{
     agent { label 'JDK_17'}
     triggers { pollSCM ('H/30 * * * *') }
+    parameters {
+        string(name: 'MAVEN_GOAL', defaultValue: 'package', description: 'maven goal') 
+        }
+
+    }
     stages{
         stage('VCS'){
             //agent { label 'git'}
@@ -10,12 +15,12 @@ pipeline{
             }
         }
         stage('package'){
-            //agent { label 'maven' || 'maven-jdk'}
+            //agent { label 'maven' || 'maven-jdk'} 
                 tools{
                 jdk 'JDK_8_UBUNTU'
             }
             steps {
-                sh 'mvn package'
+                sh "mvn ${params.MAVEN_GOAL}"
             }
         }
         stage('postbuild'){
