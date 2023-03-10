@@ -10,7 +10,7 @@ pipeline{
         }
         stage('package'){
             //agent { label 'maven' || 'maven-jdk'}
-                tolls{
+                tools{
                 jdk 'JDK_8_UBUNTU'
             }
             steps {
