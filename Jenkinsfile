@@ -38,8 +38,8 @@ pipeline{
                 mail to:"vc@gmail.co", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Boo, we failed."
                     }
             
-            }
         }
-
+    }
+    
     
 }   
