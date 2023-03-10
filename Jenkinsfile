@@ -26,11 +26,11 @@ pipeline{
             }
         }
         //('post build') {
-            steps {
-                archiveArtifacts artifacts: '**/target/gameoflife.war',
-                                 onlyIfSuccessful: true
-                junit testResults: '**/surefire-reports/TEST-*.xml'
-            }
+            //steps {
+              //  archiveArtifacts artifacts: '**/target/gameoflife.war',
+                //                 onlyIfSuccessful: true
+               // junit testResults: '**/surefire-reports/TEST-*.xml'
+          //  }
         //}
     }
 
