@@ -1,5 +1,6 @@
 pipeline{
     agent { label 'JDK_17'}
+    triggers { cron ('H/15 * * * *') }
     stages{
         stage('VCS'){
             //agent { label 'git'}
