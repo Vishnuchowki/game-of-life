@@ -21,7 +21,7 @@ pipeline{
             steps {
                 
                         sh ''
-                            #!/bin/bash
+                            
                             aws ec2 describe-images --filters "Name={params.ami_filter_name},Values={params.ami_filter_Value}" --query "Images[0].ImageId
                             ami_id=$(aws ec2 describe-images --filters "Name={params.ami_filter_name},Values={params.ami_filter_Value}" --query "Images[0].ImageId)
                             vpc_id=$(aws ec2 describe-vpcs --filters "Name=is-default,Values=true" --query "Vpcs[0].VpcId" --output text)
