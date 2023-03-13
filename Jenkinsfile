@@ -8,8 +8,7 @@ pipeline{
         choice(name: 'instance_type', choices: ['t2_micro', 't2_small', 't2_medium'],description: 'providing options for different types of instances')
         choice(name: 'security_group_id', choices: ['sg', 'sg1', 'sg2'],description: 'providing options for different types of security groups')
  
-    }
-
+         }
     stages{
         stage('VCS'){
             //agent { label 'git'}
@@ -21,7 +20,7 @@ pipeline{
         stage('launch_instances'){
             steps {
                 
-                        sh """
+                        sh '''
                             #!/bin/bash
                             aws ec2 describe-images --filters "Name={params.ami_filter_name},Values={params.ami_filter_Value}" --query "Images[0].ImageId
                             ami_id=$(aws ec2 describe-images --filters "Name={params.ami_filter_name},Values={params.ami_filter_Value}" --query "Images[0].ImageId)
@@ -37,14 +36,10 @@ pipeline{
                             sudo apt update && sudo apt install apache2 -y
                             exit
                             echo "http://${public_ip}"
-                        """
+                        '''
             }    
-
-
         }
-
-        
+     
     }
-    
-    
+  
 }   
