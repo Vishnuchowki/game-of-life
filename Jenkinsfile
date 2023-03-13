@@ -37,13 +37,21 @@ pipeline{
                 junit testResults: '**/surefire-reports/TEST-*.xml'
             }
         }                   
-        stage('notification'){           
-            steps {
-                mail to:"vc@gmail.com", subject:"SUCCESS: ${currentBuild.fullDisplayName}", body: "Yay, we passed."
-                mail to:"vc@gmail.co", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Boo, we failed."
-            }
-        }
+        
     }
-    
+    post {
+        success {
+            mail subject: "Jenkins Build of ${JOB_NAME} with id ${BUILD_ID} is success",
+                body: "Use this URL ${BUILD_URL} for more info",
+                to: 'vc@gmail.com',
+                from: 'devops@qt.com'
+        }
+        failure {
+            mail subject: "Jenkins Build of ${JOB_NAME} with id ${BUILD_ID} is failed",
+                body: "Use this URL ${BUILD_URL} for more info",
+                to: "${GIT_AUTHOR_EMAIL}",
+                from: 'devops@qt.com'
+        }
+    }   
     
 }   
