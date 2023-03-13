@@ -8,7 +8,7 @@ pipeline{
         choice(name: 'instance_type', choices: ['t2_micro', 't2_small', 't2_medium'],description: 'providing options for different types of instances')
         choice(name: 'security_group_id', choices: ['sg', 'sg1', 'sg2'],description: 'providing options for different types of security groups')
  
-        }
+    }
 
     stages{
         stage('VCS'){
